@@ -3,7 +3,7 @@
 int main() {
     char operator;
 
-    // User input for the operator
+
     printf("Enter an operator (+, -, *, /): ");
     scanf(" %c", &operator);
 
