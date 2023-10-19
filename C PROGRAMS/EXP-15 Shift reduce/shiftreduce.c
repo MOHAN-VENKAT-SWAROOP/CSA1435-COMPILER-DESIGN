@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-
 struct ProductionRule
 {
     char left[10];
@@ -12,14 +11,9 @@ int main()
     char input[20], stack[50], temp[50], ch[2], *token1, *token2, *substring;
     int i, j, stack_length, substring_length, stack_top, rule_count = 0;
     struct ProductionRule rules[10];
-
     stack[0] = '\0';
-
-    // User input for the number of production rules
     printf("\nEnter the number of production rules: ");
     scanf("%d", &rule_count);
-
-    // User input for each production rule in the form 'left->right'
     printf("\nEnter the production rules (in the form 'left->right'): \n");
     for (i = 0; i < rule_count; i++)
     {
@@ -29,11 +23,8 @@ int main()
         strcpy(rules[i].left, token1);
         strcpy(rules[i].right, token2);
     }
-
-    // User input for the input string
     printf("\nEnter the input string: ");
     scanf("%s", input);
-
     i = 0;
     while (1)
     {
