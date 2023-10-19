@@ -1,0 +1,14 @@
+%{
+%}
+%%
+[a-z][a-z.0-9]+ {printf("It is an identifier");}
+.+ {printf("It is not an identifier");}
+%%
+int yywrap()
+{
+}
+int main()
+{
+printf("Enter the input:");
+yylex();
+}
