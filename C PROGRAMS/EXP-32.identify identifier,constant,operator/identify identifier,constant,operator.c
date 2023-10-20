@@ -1,24 +1,30 @@
 #include <stdio.h>
-#include <string.h>
 #include <ctype.h>
-
+#include <string.h>
 int main() {
-    char input[100];
-    printf("Enter C code (end with a semicolon ';'):\n");
-    fgets(input, sizeof(input), stdin);
-
-    char *token = strtok(input, " \t\n;+-*/=(),<>[]{}");
-    
-    while (token != NULL) {
-        if (isalpha(token[0])) {
-            printf("Identifier: %s\n", token);
-        } else if (isdigit(token[0])) {
-            printf("Constant: %s\n", token);
-        } else {
-            printf("Operator: %s\n", token);
+    int ic = 0, cc = 0, oc = 0, m;
+    char b[100], operators[30] = "", identifiers[30] = "", constants[30] = "";
+    printf("Enter the string: ");
+    scanf("%[^\n]", b);
+    for (int i = 0; b[i] != '\0'; i++) {
+        if (isalpha(b[i])) {
+            identifiers[ic++] = b[i];
+        } else if (isdigit(b[i])) {
+            m = b[i] - '0';
+            while (isdigit(b[++i])) {
+                m = m * 10 + (b[i] - '0');
+            }
+            constants[cc++] = m;
+        } else if (b[i] == '*' || b[i] == '-' || b[i] == '+' || b[i] == '=') {
+            operators[oc++] = b[i];
         }
-        token = strtok(NULL, " \t\n;+-*/=(),<>[]{}");
     }
 
+    printf("Identifiers: %s\n", identifiers);
+    printf("Constants: ");
+    for (int j = 0; j < cc; j++) {
+        printf("%d ", constants[j]);
+    }
+    printf("\nOperators: %s\n", operators);
     return 0;
 }
